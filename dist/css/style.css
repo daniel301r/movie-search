@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+body {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom,#4F567B, #818ED5)
+}
+
+.container {
+    display: grid;
+    grid-gap: 0.4rem;
+    grid-template-columns: 1.2fr 2fr 1fr;
+    /* 
+        I can't really remember what I was doing here the first time I did it,
+        I want to get the movies when they display to stay within the container -
+        the grid content spills out
+    grid-template-rows:  5rem minmax(20rem, auto); */
+    grid-template-rows: 20% 80%;
+    background: #F8F7F2;
+    border: 0.15rem solid #32312D;
+    box-shadow: 2px 3px 2px 1px rgba(49, 48, 48, 0.4);
+    min-width: 900px;
+    max-width: 1200px;
+    height: 80%;
+    padding: 0.4rem;
+    border-radius: 0.4rem;  
+    grid-template-areas: 
+    "header header header"
+    "movies movie movieList"
+    "movies movie movieList"
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-area: header;
+}
+
+header h2 {
+    color: #4e4ed6;
+    text-transform: uppercase;
+    font-size: 3.3rem;
+    font-family: 'Shrikhand', cursive;
+    font-weight: 500;
+    text-shadow: 1px 2px 1px #3a3a3a;
+}
+
+.search{
+    background-color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: 0.1rem solid rgba(50, 49, 45, 0.8);
+    box-shadow: 2px 3px 2px 1px rgba(0, 0, 255, .2);
+}
+
+input[type=text] {
+    padding: 0.2rem;
+    border: 0.06rem solid rgba(50, 49, 45, 0.6);
+    border-radius: 0.2rem;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border: 0.1rem solid rgba(78, 78, 214, 0.8);
+    border-radius: 0.2rem;
+}
+
+.btn__search{
+    cursor: pointer;
+    border-radius: 0.4rem;
+    padding: 0.28rem;
+    border: none;
+    background-color: #7878f1;
+    color: white;
+}
+
+.btn__search:hover{
+    background-color: #45459a;
+    transform: scale(1.02);
+}
+
+/* ALL COLUMNS  */
+
+.column {
+    border: 2px solid grey;
+    border-radius: 0.2rem;
+}
+
+/* RESULTS LIST */
+
+.movies {
+    grid-area: movies;
+    overflow: scroll;
+}
+
+.moviesResults{
+    list-style: none;
+}
+
+.moviesResults li {
+    background-color: #FFFFFF;
+}
+
+.moviesResults li:nth-child(even) {
+    background-color: rgba(136, 139, 89, 0.767);
+}
+
+.results__link{
+    display: flex;
+    align-items: center;
+    padding: 0.27rem;
+    text-decoration: none; 
+}
+
+/* I am terrible at doing images but this seemed to work so that the images were a decent size compared 
+    to the text and didn't take up too much space - what would be better? */
+
+.results__link img {
+    height: 4rem;
+    width: 28%;
+    border-radius: 50%;
+    margin-right: 0.1rem;
+}
+
+/* SELECTED MOVIE */
+
+.movie {
+    grid-area: movie;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie h1 {
+    text-align: center;
+    font-size: 1.3rem;
+    padding-bottom: 0.1rem;
+}
+
+.movie h4 span {
+    font-weight: 200;
+}
+
+.mainInfo{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, 1fr);  
+    grid-gap: 0.3rem;
+}
+
+.mainInfo img {
+    width: 100%;
+    grid-row: 1 / -1;
+    /* I did this in grid before and I've forgotten what I was doing but  I wanted to size the image down so it would fit in the 
+        column because before the image was too big and the grid was spilling out of the container - that's my big problem I don't 
+        really know how all the elements relate to each other and how that works with percentages and rem etc.  */
+    height: 100%;
+    border-radius: 0.3rem;
+ }
+
+ .extraInfo h4{
+     padding: 0.3rem 0;
+ }
+
+.btn_add_movie{
+    align-self: center;
+    width: 30%;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    color:#000000;
+    text-align:center;
+    transition: all 0.2s;
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 1rem;
+}
+
+.btn_add_movie:hover{
+    color:#1f1010;
+    background-color:#7878f1;
+}
+
+
+/*  TO WATCH LIST */
+
+.movieList{
+    grid-area: movieList;
+    display: flex;
+    flex-direction: column;
+}
+
+.movieList h1{
+    padding: 0.2rem;
+    text-align: center;
+}
+
+.movieList ul{
+    padding: 0.2rem;
+}
+
+.movieList li h4{
+    padding: 0.1rem;
+}
+
+.movieList li{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+/* I set the button width to 50% because when I set the display to flex box - the button takes up all the space
+    - I dunno if this is the best way to do it */
+.movieListDelete{
+    width: 50%;
+    align-self: flex-end;
+    padding: 0.05rem;
+    margin-right: 0.2rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #7878f1;
+    color: aliceblue;
+}
+
