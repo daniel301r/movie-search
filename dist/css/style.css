@@ -22,11 +22,6 @@ body {
     display: grid;
     grid-gap: 0.4rem;
     grid-template-columns: 1.2fr 2fr 1fr;
-    /* 
-        I can't really remember what I was doing here the first time I did it,
-        I want to get the movies when they display to stay within the container -
-        the grid content spills out
-    grid-template-rows:  5rem minmax(20rem, auto); */
     grid-template-rows: 20% 80%;
     background: #F8F7F2;
     border: 0.15rem solid #32312D;
@@ -125,9 +120,6 @@ input[type=text]:focus {
     text-decoration: none; 
 }
 
-/* I am terrible at doing images but this seemed to work so that the images were a decent size compared 
-    to the text and didn't take up too much space - what would be better? */
-
 .results__link img {
     height: 4rem;
     width: 28%;
@@ -164,9 +156,6 @@ input[type=text]:focus {
 .mainInfo img {
     width: 100%;
     grid-row: 1 / -1;
-    /* I did this in grid before and I've forgotten what I was doing but  I wanted to size the image down so it would fit in the 
-        column because before the image was too big and the grid was spilling out of the container - that's my big problem I don't 
-        really know how all the elements relate to each other and how that works with percentages and rem etc.  */
     height: 100%;
     border-radius: 0.3rem;
  }
@@ -223,8 +212,6 @@ input[type=text]:focus {
     flex-direction: column;
 }
 
-/* I set the button width to 50% because when I set the display to flex box - the button takes up all the space
-    - I dunno if this is the best way to do it */
 .movieListDelete{
     width: 50%;
     align-self: flex-end;
